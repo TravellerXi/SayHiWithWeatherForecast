@@ -6,3 +6,9 @@
 使用本脚本需要注册腾讯云，并通过短信模板审核。
 短信模板类似如下：
 ![Image text](https://raw.githubusercontent.com/TravellerXi/SayHiWithWeatherForecast/main/photo/template.png)
+
+效果如下:
+![Image text](https://raw.githubusercontent.com/TravellerXi/SayHiWithWeatherForecast/main/photo/result.png)
+
+
+最后的最后：舔狗舔到最后，一无所有。
