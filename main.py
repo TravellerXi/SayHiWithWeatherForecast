@@ -94,4 +94,4 @@ if __name__=="__main__":
     template_id = 0
     ######################################
     thisWeather=WeatherForecastSender("xuhuiqu")
-    thisWeather.SendWeatherReportByMsg("小仙女","徐汇区","18888888888")
+    thisWeather.SendWeatherReportByMsg("小仙女","徐汇区","18888888888",appid,appkey,template_id)
