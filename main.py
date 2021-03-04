@@ -7,7 +7,7 @@ import sys
 import datetime
 from qcloudsms_py import SmsSingleSender
 
-class WeatherForecastSender():
+class WeatherForecastSender:
     def __init__(self,CityCode):
         """
         :param CityCode: 城市或者县的拼音，如杭州市:hangzhou 下城区:xiachengqu, string type
@@ -38,8 +38,8 @@ class WeatherForecastSender():
             self.Sunrise = RawData[:int(RawData.find('<br'))]
             RawData = RawData[int(RawData.find('日落:')) + 3:]
             self.Sunset = RawData[:int(RawData.find('</span>'))]
-            print(self.Weather, self.AirQuality, self.Sunset, self.WindDirection, self.Humidity, self.Ultravioletrays,
-                  self.Temperature, self.Sunrise, self.TemperatureRange)
+            #print(self.Weather, self.AirQuality, self.Sunset, self.WindDirection, self.Humidity, self.Ultravioletrays,
+            #      self.Temperature, self.Sunrise, self.TemperatureRange)
 
             Blank = " "
             if self.Weather.find('雨') > 0:
@@ -80,6 +80,7 @@ class WeatherForecastSender():
         try:
             ssender.send_with_param(86, PhoneNumber,
                                              template_id, params)
+            print("消息发送成功")
         except Exception as e:
             print(e)
 
@@ -93,5 +94,6 @@ if __name__=="__main__":
     appkey = ""
     template_id = 0
     ######################################
-    thisWeather=WeatherForecastSender("xuhuiqu")
+    thisWeather=WeatherForecastSender("xuhuiqu") #填入 城市或者县的拼音，如杭州市:hangzhou  或者下城区:xiachengqu
     thisWeather.SendWeatherReportByMsg("小仙女","徐汇区","18888888888",appid,appkey,template_id)
+    #填入昵称，城市名，手机号
