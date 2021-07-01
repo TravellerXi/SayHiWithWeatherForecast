@@ -16,9 +16,11 @@ class WeatherForecastSender:
         """
         try:
             http = urllib3.PoolManager()
+            headers = {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36"}
             sysEncode = sys.getfilesystemencoding()
             url = 'http://www.tianqi.com/' + CityCode
-            RawData = http.request("GET", url)
+            RawData = http.request(method="GET", url=url,headers=headers)
             RawData = RawData.data.decode(sysEncode)
             RawData = RawData[int(RawData.find('class="weather"')):int(RawData.find('class="day7"'))]
             self.Temperature = RawData[
@@ -60,7 +62,8 @@ class WeatherForecastSender:
                 self.AirQuality_Msg = " 污染严重，记得戴口罩哈"
             else:
                 self.AirQuality_Msg = Blank
-        except:
+        except Exception as e:
+            #print(e)
             print("failed to init, try again later or check the website")
     def SendWeatherReportByMsg(self,Nickname,CityChinese,PhoneNumber,appid,appkey,template_id):
         """
