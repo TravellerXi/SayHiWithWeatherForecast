@@ -98,6 +98,7 @@ if __name__=="__main__":
     appkey = ""
     template_id = 0
     ######################################
-    thisWeather=WeatherForecastSender("xuhuiqu") #填入 城市或者县的拼音，如杭州市:hangzhou  或者下城区:xiachengqu
+    thisWeather=WeatherForecastSender("xuhuiqu") #填入 城市或者县的拼音，如杭州市:hangzhou  或者下城区:xiachengqu 或者徐汇区: xuhui
+    # Note: 请先确认"http://www.tianqi.com/"+"你填的城市或区拼音" 这样的URL能否打开天气。如打不开，请在"http://www.tianqi.com"里搜索你想要的城市并从URL中提取城市代码。
     thisWeather.SendWeatherReportByMsg("小仙女","徐汇区","18888888888",appid,appkey,template_id)
     #填入昵称，城市名，手机号
