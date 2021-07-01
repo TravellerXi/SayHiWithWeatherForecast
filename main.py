@@ -62,9 +62,10 @@ class WeatherForecastSender:
                 self.AirQuality_Msg = " 污染严重，记得戴口罩哈"
             else:
                 self.AirQuality_Msg = Blank
-        except Exception as e:
-            #print(e)
-            print("failed to init, try again later or check the website")
+        except :
+            print("请调试: 城市拼音代码可能不准确，请浏览器手动打开URL以测试:",url)
+            print("如不对，请在打开的网页里搜索城市，拿到URL里的城市拼音代码")
+            print("------------------我是分隔符-------------------")
     def SendWeatherReportByMsg(self,Nickname,CityChinese,PhoneNumber,appid,appkey,template_id):
         """
         调用腾讯云短信API，发送短信提示，需要事先在腾讯云里申请短信模板。
