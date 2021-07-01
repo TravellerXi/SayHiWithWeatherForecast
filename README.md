@@ -9,7 +9,7 @@
 1. 安装Python3
 2. pip install qcloudsms-py
 
-Note: Python 3.9及以上版本，qcloudsms-py模块有json bug，请使用python3.9及以下版本或者等待qcloudsms-py腾讯官方更新。
+Note: Python 3.9及以上版本，qcloudsms-py模块有json bug，请使用python3.9及以下版本或者等待qcloudsms-py腾讯官方更新。Ref: https://github.com/qcloudsms/qcloudsms_py/pull/14
 
 短信模板类似如下：
 ![Image text](https://raw.githubusercontent.com/TravellerXi/SayHiWithWeatherForecast/main/photo/template.png)
