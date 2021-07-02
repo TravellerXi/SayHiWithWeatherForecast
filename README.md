@@ -8,6 +8,8 @@
 环境准备: 
 1. 安装Python3
 2. pip install qcloudsms-py
+3. 修改Configure.ini里的配置信息
+4. "python main.py" 以运行。
 
 Note: Python 3.9及以上版本，qcloudsms-py模块有json bug，请使用python3.9及以下版本或者等待qcloudsms-py腾讯官方更新。Ref: https://github.com/qcloudsms/qcloudsms_py/pull/14
 
