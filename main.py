@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 # coding:utf-8
 # need to: pip install qcloudsms-py
+# change setting in Configure.ini file.
+import os
 
 import urllib3
 import sys
 import datetime
 from qcloudsms_py import SmsSingleSender
+import configparser
 
 class WeatherForecastSender:
     def __init__(self,CityCode):
@@ -92,13 +95,19 @@ class WeatherForecastSender:
 
 
 if __name__=="__main__":
-    ######################################
-    # 此区域填入腾讯云短信API接口信息
-    appid = 0
-    appkey = ""
-    template_id = 0
-    ######################################
-    thisWeather=WeatherForecastSender("xuhui") #填入 城市或者县的拼音，如杭州市:hangzhou  或者下城区:xiachengqu 或者徐汇区: xuhui
-    # Note: 请先确认"http://www.tianqi.com/"+"你填的城市或区拼音" 这样的URL能否打开天气。如打不开，请在"http://www.tianqi.com"里搜索你想要的城市并从URL中提取城市代码。
-    thisWeather.SendWeatherReportByMsg("小仙女","徐汇区","18888888888",appid,appkey,template_id)
-    #填入昵称，城市名，手机号
+    if sys.path[0]=='':
+        CurrentDir=os.getcwd()
+    else:
+        CurrentDir=sys.path[0]
+    ConfigurePath=CurrentDir+"/Configure.ini"
+    Config=configparser.ConfigParser()
+    Config.read(ConfigurePath,encoding="utf-8")
+    appid=int(Config.get("Configure","appid"))
+    appkey=str(Config.get("Configure","appkey"))
+    template_id=int(Config.get("Configure","template_id"))
+    citycode=(Config.get("Configure","citycode"))
+    cityname=(Config.get("Configure","cityname"))
+    nickname=(Config.get("Configure","nickname"))
+    phonenumber=(Config.get("Configure","phonenumber"))
+    thisWeather=WeatherForecastSender(citycode)
+    thisWeather.SendWeatherReportByMsg(nickname,cityname,phonenumber,appid,appkey,template_id)
